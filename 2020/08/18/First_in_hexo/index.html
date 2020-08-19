@@ -64,15 +64,17 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/English/">英语学习</a></li>
-	        
 				<li><a href="/tags/Math/">Mathematics</a></li>
+	        
+				<li><a href="/tags/English/">English</a></li>
 	        
 				<li><a href="/tags/Music/">Music</a></li>
 	        
 				<li><a href="/tags/Painting/">Paintings</a></li>
 	        
 				<li><a href="/tags/Traveling/">Traveling</a></li>
+	        
+				<li><a href="/tags/Game/">Entertainment</a></li>
 	        
 			</ul>
 		</nav>
@@ -136,6 +138,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -152,17 +156,19 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 16.666666666666668%"><a href="/">主页</a></li>
+					<li style="width: 14.285714285714286%"><a href="/">主页</a></li>
 		        
-					<li style="width: 16.666666666666668%"><a href="/tags/English/">英语学习</a></li>
+					<li style="width: 14.285714285714286%"><a href="/tags/Math/">Mathematics</a></li>
 		        
-					<li style="width: 16.666666666666668%"><a href="/tags/Math/">Mathematics</a></li>
+					<li style="width: 14.285714285714286%"><a href="/tags/English/">English</a></li>
 		        
-					<li style="width: 16.666666666666668%"><a href="/tags/Music/">Music</a></li>
+					<li style="width: 14.285714285714286%"><a href="/tags/Music/">Music</a></li>
 		        
-					<li style="width: 16.666666666666668%"><a href="/tags/Painting/">Paintings</a></li>
+					<li style="width: 14.285714285714286%"><a href="/tags/Painting/">Paintings</a></li>
 		        
-					<li style="width: 16.666666666666668%"><a href="/tags/Traveling/">Traveling</a></li>
+					<li style="width: 14.285714285714286%"><a href="/tags/Traveling/">Traveling</a></li>
+		        
+					<li style="width: 14.285714285714286%"><a href="/tags/Game/">Entertainment</a></li>
 		        
 				</ul>
 			</nav>
@@ -189,6 +195,17 @@
     </h1>
   
 
+        <!--显示阅读次数-->
+        
+          <br/>
+          <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+          <span class="icon-sort"></span>
+          <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+                    阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+          </span>
+          </a>
+        
+        <!--显示阅读次数完毕-->
         
         <a href="/2020/08/18/First_in_hexo/" class="archive-article-date">
   	<time datetime="2020-08-18T03:22:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-18</time>
@@ -367,6 +384,9 @@
     </div>
   </div>
 </footer>
+<!--页面点击小红心-->
+<script type="text/javascript" src="/love.js"></script>
+
     </div>
     <script>
 	var yiliaConfig = {
@@ -599,6 +619,22 @@ MathJax.Hub.Queue(function() {
     </div>
 
 </div>
-  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
