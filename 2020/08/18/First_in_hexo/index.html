@@ -61,7 +61,13 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/English/">English</a></li>
+				<li><a href="/tags/English/">English学习</a></li>
+	        
+				<li><a href="/tags/Math/">Mathematics</a></li>
+	        
+				<li><a href="/tags/Music/">Music</a></li>
+	        
+				<li><a href="/tags/Painting/">Paintings</a></li>
 	        
 			</ul>
 		</nav>
@@ -115,6 +121,12 @@
 			
 				
 			
+				
+			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -128,12 +140,18 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/English/">English</a></li>
+					<li style="width: 20%"><a href="/tags/English/">English学习</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/Math/">Mathematics</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/Music/">Music</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/Painting/">Paintings</a></li>
 		        
 				</ul>
 			</nav>
@@ -173,12 +191,10 @@
 </blockquote>
 <h2 id="Quote-from-a-book"><a href="#Quote-from-a-book" class="headerlink" title="Quote from a book"></a>Quote from a book</h2><blockquote><p>Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</p>
 <footer><strong>David Levithan</strong><cite>Wide Awake</cite></footer></blockquote>
-<h2 id="Quote-from-a-code-block"><a href="#Quote-from-a-code-block" class="headerlink" title="Quote from a code block"></a>Quote from a code block</h2><p>Using markdown directly</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">&quot;hello world&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Quote-from-a-code-block"><a href="#Quote-from-a-code-block" class="headerlink" title="Quote from a code block"></a>Quote from a code block</h2><p>Using markdown directly<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">&quot;hello world&quot;</span>)</span><br></pre></td></tr></table></figure></p>
 <h2 id="Using-asset-to-grab-an-image"><a href="#Using-asset-to-grab-an-image" class="headerlink" title="Using asset to grab an image"></a>Using asset to grab an image</h2><img src="/2020/08/18/First_in_hexo/63722192_p0.png" class="">
 <a href="/2020/08/18/First_in_hexo/63722192_p0.png" title="63722192_p0.png">63722192_p0.png</a>
 /2020/08/18/First_in_hexo/63722192_p0.png
-
 <h2 id="Using-asset-to-grab-any-type-of-file"><a href="#Using-asset-to-grab-any-type-of-file" class="headerlink" title="Using asset to grab any type of file"></a>Using asset to grab any type of file</h2><a href="/2020/08/18/First_in_hexo/WPME_session17_notes.pdf" title="WPME_session17_notes.pdf">WPME_session17_notes.pdf</a>
       
 
@@ -195,6 +211,16 @@
                   <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
                   <div class="reward-box">
                     
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/payment/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/payment/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
                     
                   </div>
                 </span>
@@ -431,6 +457,10 @@ MathJax.Hub.Queue(function() {
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Vocabulary</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Math</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -557,6 +587,22 @@ MathJax.Hub.Queue(function() {
     </div>
 
 </div>
-  </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 </html>
