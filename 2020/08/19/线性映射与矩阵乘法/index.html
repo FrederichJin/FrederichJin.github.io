@@ -16,7 +16,7 @@
 <meta property="og:description" content="Introduction通常线性代数教材都会先讲矩阵, 然后隔着好几章再讲线性变换(线性映射), 而讲矩阵时必然会涉及到矩阵的运算. 矩阵的加法只要将对应的entry相加就行, 但是乘法的定义就不那么自然了. 事实上, 如果我们从线性映射的角度去定义矩阵的运算, 这些看似奇怪的规则就会变得十分自然.  Linear Algebra Done Right一书先引入线性映射的概念, 再将一种特殊的线性">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-19T13:20:42.000Z">
-<meta property="article:modified_time" content="2020-08-21T08:17:47.654Z">
+<meta property="article:modified_time" content="2020-08-21T10:06:33.302Z">
 <meta property="article:author" content="Jin Dian">
 <meta property="article:tag" content="Math">
 <meta property="article:tag" content="线性代数">
@@ -215,7 +215,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>通常线性代数教材都会先讲矩阵, 然后隔着好几章再讲线性变换(线性映射), 而讲矩阵时必然会涉及到矩阵的运算. 矩阵的加法只要将对应的entry相加就行, 但是乘法的定义就不那么自然了. 事实上, 如果我们从线性映射的角度去定义矩阵的运算, 这些看似奇怪的规则就会变得十分自然. </p>
-<p>Linear Algebra Done Right一书先引入线性映射的概念, 再将一种特殊的线性映射与矩阵联系起来, 并且证明了 $\mathcal{L}(V, W)\cong \mathbb{F}^{m,n}.$ 矩阵的加法为何定义成对应元素相加? 矩阵的数乘为何定义成 $\lambda$ 去乘每一个元素? 矩阵的乘法为什么不是对应的元素相乘? 从线性映射的运算和线性映射的矩阵表示这两方面联合考虑, 你将会得到答案. </p>
+<p>Linear Algebra Done Right一书先引入线性映射的概念, 再将一种特殊的线性映射与矩阵联系起来. 矩阵的加法为何定义成对应元素相加? 矩阵的数乘为何定义成 $\lambda$ 去乘每一个元素? 矩阵的乘法为什么不是对应的元素相乘? 从线性映射的运算和线性映射的矩阵表示这两方面联合考虑, 你将会得到答案. </p>
 <p>此外, 还有一个运算: 转置. 这个对应着什么呢? 在矩阵转置这一节我们将会介绍两个全新的概念: dual map(对偶映射)和 dual space(对偶空间), 它们可以解释矩阵的转置和矩阵的rank(秩), 这也是Linear map这章中最精彩的部分.</p>
 <p>LADR有好多小结论都 left to reader 了, 参考的部分中作者省略的过程我都自己证了一遍, 在视频和笔记pdf中可以看到.  </p>
 <p>系列视频正在施工中: </p>
@@ -227,16 +227,37 @@
 <li>第五节 <a href="">对偶空间与矩阵的转置</a> 最精彩的部分, $\mathcal{M}(T’) = (\mathcal{M}(T))^t$ 是本章最优美的定理. </li>
 </ul>
 <p>以下内容是一些简略的介绍, 定理的证明和其他详细内容还请看教材和笔记pdf.</p>
-<h2 id="线性映射的概念"><a href="#线性映射的概念" class="headerlink" title="线性映射的概念"></a>线性映射的概念</h2><h4 id="def"><a href="#def" class="headerlink" title="def"></a>def</h4><p>A linear map from $V$ to $W$ is a function $T: V \to W$ with the following properties:</p>
-<ul>
+<h3 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h3><ul>
+<li>$\mathbb{F}$ denotes $\mathbb{R}$ or $\mathbb{C}$</li>
+<li>$V$ and $W$ are vector spaces over $\mathbb{F}.$<h2 id="线性映射的概念"><a href="#线性映射的概念" class="headerlink" title="线性映射的概念"></a>线性映射的概念</h2><strong>def.</strong> A linear map from $V$ to $W$ is a function $T: V \to W$ with the following properties:</li>
 <li>additivity: $T(u+v)=Tu+Tv$ for all $\lambda \in \mathbb{F}$ and $v \in V.$</li>
-<li>homogenity: $T(\lambda v) = \lambda (Tv)$ for all $\lambda \in \mathbb{F}$ and $v \in V$.<h3 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h3>The set of all linear maps from $V$ to $W$ is denoted $\mathcal{L}(V, W).$</li>
+<li>homogenity: $T(\lambda v) = \lambda (Tv)$ for all $\lambda \in \mathbb{F}$ and $v \in V$.<h5 id="Notation-1"><a href="#Notation-1" class="headerlink" title="Notation"></a>Notation</h5>The set of all linear maps from $V$ to $W$ is denoted $\mathcal{L}(V, W).$</li>
 </ul>
-<p>这里需要大家非常熟悉映射的概念和记号. 当然映射的一般概念不是我们这里的重点, 想要复习的同学可以查阅 _Topology_, 2nd Munkres 的 section 2.</p>
-<p>$T$ 作用到 $v \in V$ 上得到 $W$ 中的元素(向量) $Tv$, 一定要明确每个元素所属的集合. 这里 $v \in V, T \in \mathcal{L}(V, W), Tv \in W.$ 初学时可以花点时间像我刚才这样把每个元素集齐所属集合写下来, 要不然到对偶映射那里肯定会头晕的. </p>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>我们举一个例子: 零映射. 这个映射把 $V$ 中的所有元素都映到 $W$ 中的零元. 看起来很简单是不是? 但是请注意, 这里我们遇到了两种”零”. 第一个”0”是零映射, 所以有 $0 \in \mathcal{L}(V, W).$ 第二个”0”是 $W$ 中的加法单位元(additive identity), $0 \in W.$ 虽然它们看起来一模一样, 但不是同一个东西. 在没有搞清楚 $0$ 是谁的 $0$ 时, 我们并不能下一些诸如 $0=0$ 的结论. 假如我们这里 $V=W=\mathbb{R},$ 是我们非常熟悉的实数集, 那么 $0 \in \mathcal{L}(\mathbb{R}, \mathbb{R})$ 就是一个函数, 它把所有实数都映成 $0 \in \mathbb{R}.$ 既然 $0 \in \mathcal{L}(\mathbb{R}, \mathbb{R})$ 是一个函数, 那我们就换一个比较熟悉的记号 $f$ 来记零映射. 那么刚才的结论就变成了 $f(\in \mathcal{L}(\mathbb{R}, \mathbb{R})) = 0 \in \mathbb{R}.$ 由于我们没有定义映射和实数之间的大小关系, 这个式子根本就没有意义. </p>
+<p>这里需要大家非常熟悉映射的概念和记号. 当然映射的一般概念不是我们这里的重点, 想要复习的同学可以查阅 <em>Topology</em>, 2nd Munkres 的 section 2.</p>
+<p>$T$ 作用到 $v \in V$ 上得到 $W$ 中的元素(向量) $Tv$, 一定要明确每个元素所属的集合. 这里 $v \in V, T \in \mathcal{L}(V, W), Tv \in W.$ 初学时可以花点时间像我刚才这样把每个元素及其所属集合写下来, 要不然到对偶映射那里肯定会头晕的. </p>
+<h5 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h5><p>我们举一个例子: 零映射. 这个映射把 $V$ 中的所有元素都映到 $W$ 中的零元. 看起来很简单是不是? 但是请注意, 这里我们遇到了两种”零”. 第一个”0”是零映射, $0 \in \mathcal{L}(V, W).$ 第二个”0”是 $W$ 中的加法单位元(additive identity), $0 \in W.$ 虽然它们看起来一模一样, 但不是同一个东西. 在没有搞清楚 $0$ 是谁的 $0$ 时, 我们并不能下一些诸如 $0=0$ 的结论. 假如我们这里 $V=W=\mathbb{R},$ 是我们非常熟悉的实数集, 那么 $0 \in \mathcal{L}(\mathbb{R}, \mathbb{R})$ 就是一个函数, 它把所有实数都映成 $0 \in \mathbb{R}.$ 既然 $0 \in \mathcal{L}(\mathbb{R}, \mathbb{R})$ 是一个函数, 那我们就换一个比较熟悉的记号 $f$ 来记零映射. 那么刚才的结论就变成了 $f(\in \mathcal{L}(\mathbb{R}, \mathbb{R})) = 0 \in \mathbb{R}.$ 由于我们没有定义映射和实数之间的大小关系, 这个式子根本就没有意义. </p>
 <p>现在回到我们的主线: 证明零映射是线性映射, 这个在视频及笔记pdf中有. </p>
-
+<h5 id="T-由基决定"><a href="#T-由基决定" class="headerlink" title="$T$ 由基决定"></a>$T$ 由基决定</h5><p><strong>Thm 3.5</strong> Suppose $v_1, \cdots, v_n$ is a basis of $V$ and $w_1, \cdots, w_n \in W.$ Then there exists a unique linear map $T: V \to W$ such that $Tv_j=w_j$ for each $j=1, \cdots, n.$</p>
+<p>$V$ 中一个基中的每个向量在 $T$ 下的像唯一决定了该线性映射. 凭空扔给我们一个 $T,$ 只告诉我们 $Tv_1, \cdots, Tv_n$ 这 $n$ 个元素的值(也就是定理中的 $n$ 个 $w_i$), 我们就能算出 $Tv,$ 对所有的 $v \in V.$ </p>
+<p>这是因为, $V$ 中的任一向量 $v$ 可以写成基的线性组合: </p>
+<script type="math/tex; mode=display">v=c_1v_1 + \cdots + c_nv_n,</script><p>那么 </p>
+<script type="math/tex; mode=display">Tv = T(c_1 v_1 + \cdots + c_n v_n) = c_1 Tv_1 + \cdots + c_n Tv_n.</script><p>而右边式子中的项都是已知的.</p>
+<h5 id="线性映射基本定理"><a href="#线性映射基本定理" class="headerlink" title="线性映射基本定理"></a>线性映射基本定理</h5><h2 id="用矩阵表示线性映射"><a href="#用矩阵表示线性映射" class="headerlink" title="用矩阵表示线性映射"></a>用矩阵表示线性映射</h2><p>矩阵长啥样就不多说了, 我们直接把矩阵和线性映射联系起来. </p>
+<p><strong>def.</strong> Suppose $T \in \mathcal{L}(V, W)$ and $v_1, \cdots, v_n$ is a basis of $V$ and $w_1, \cdots, w_m$ is a basis of $W.$ The matrix of $T$ with respect to these bases is the $m \times n$ matrix $\mathcal{M}(T)$ whose entries $A_{jk}$ are defined by </p>
+<script type="math/tex; mode=display">Tv_k = A_{1k}w_1 + \cdots + A_{mk}w_m</script><p>for $k=1, \cdots, n.$</p>
+<p>$Tv_k$ 是 $W$ 中的向量, 能够写成 $W$ 的基的线性组合, 系数 $A_{1k}, \cdots, {A_{mk}}$ 便是矩阵第 $k$ 列的元素. 把 $k$ 从 $1$ 遍历到 $n$ 就得到了一个完整的矩阵, 称为 $T$ 关于这一组基的矩阵, 记为 $\mathcal{M}(T).$</p>
+<h2 id="线性映射的运算"><a href="#线性映射的运算" class="headerlink" title="线性映射的运算"></a>线性映射的运算</h2><p>以下仅列出keypoints, 详见视频和笔记pdf.</p>
+<h5 id="映射的加法和数乘"><a href="#映射的加法和数乘" class="headerlink" title="映射的加法和数乘"></a>映射的加法和数乘</h5><ul>
+<li>addition: $(S+T)v := Sv + Tv$</li>
+<li>scalar multiplication: $(\lambda T)v := \lambda(Tv)$</li>
+<li>$S+T, \lambda T$ is linear. </li>
+</ul>
+<h5 id="映射的乘法-复合映射"><a href="#映射的乘法-复合映射" class="headerlink" title="映射的乘法(复合映射)"></a>映射的乘法(复合映射)</h5><ul>
+<li>$ST$ 的定义, 其中 $T \in \mathcal{L}(U, V), S \in \mathcal{L}(V, W).$</li>
+<li>$ST$ is a linear map from $U$ to $W.$</li>
+</ul>
+<h5 id="mathcal-L-V-W-是一个线性空间"><a href="#mathcal-L-V-W-是一个线性空间" class="headerlink" title="$\mathcal{L}(V, W)$ 是一个线性空间"></a>$\mathcal{L}(V, W)$ 是一个线性空间</h5><p>按照我们定义的线性映射的加法和数乘, $\mathcal{L}(V, W)$ 构成域 $\mathbb{F}$ 上的线性空间. 由8条性质验证, 视频及笔记中有.</p>
+<h2 id="矩阵的运算"><a href="#矩阵的运算" class="headerlink" title="矩阵的运算"></a>矩阵的运算</h2>
       
 
       
@@ -396,6 +417,19 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Notation"><span class="toc-number">1.1.</span> <span class="toc-text">Notation</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">线性映射的概念</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Notation-1"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">Notation</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Example"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">Example</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#T-%E7%94%B1%E5%9F%BA%E5%86%B3%E5%AE%9A"><span class="toc-number">2.0.0.3.</span> <span class="toc-text">$T$ 由基决定</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84%E5%9F%BA%E6%9C%AC%E5%AE%9A%E7%90%86"><span class="toc-number">2.0.0.4.</span> <span class="toc-text">线性映射基本定理</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84"><span class="toc-number">3.</span> <span class="toc-text">用矩阵表示线性映射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84%E7%9A%84%E8%BF%90%E7%AE%97"><span class="toc-number">4.</span> <span class="toc-text">线性映射的运算</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%98%A0%E5%B0%84%E7%9A%84%E5%8A%A0%E6%B3%95%E5%92%8C%E6%95%B0%E4%B9%98"><span class="toc-number">4.0.0.1.</span> <span class="toc-text">映射的加法和数乘</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%98%A0%E5%B0%84%E7%9A%84%E4%B9%98%E6%B3%95-%E5%A4%8D%E5%90%88%E6%98%A0%E5%B0%84"><span class="toc-number">4.0.0.2.</span> <span class="toc-text">映射的乘法(复合映射)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#mathcal-L-V-W-%E6%98%AF%E4%B8%80%E4%B8%AA%E7%BA%BF%E6%80%A7%E7%A9%BA%E9%97%B4"><span class="toc-number">4.0.0.3.</span> <span class="toc-text">$\mathcal{L}(V, W)$ 是一个线性空间</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E7%9A%84%E8%BF%90%E7%AE%97"><span class="toc-number">5.</span> <span class="toc-text">矩阵的运算</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -440,7 +474,7 @@
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
-		toc_hide_index: true,
+		toc_hide_index: false,
 		root: "/",
 		innerArchive: true,
 		showTags: false
