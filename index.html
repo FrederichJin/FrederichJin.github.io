@@ -558,8 +558,14 @@
 <script type="math/tex; mode=display">\begin{array}{ccccc}
     U & \xrightarrow{T} & V &\xrightarrow{S} & W
 \end{array}</script><p>设 $\mathcal{M}(S) = C, \mathcal{M}(T) = A.$ 由于这里涉及到多个线性空间, 为避免混淆, 我们按定义写出 $C$ 和 $A$ 的列元素:</p>
-<script type="math/tex; mode=display">Tu_k = A_{1k} + \cdots + A_{nk}, k = 1, \cdots, p \\
-Sv_r = C_{1r} + \cdots + C_{mr}, r = 1, \cdots, n.</script><p>注意这里 $C$ 的 size 为 $m \times n, A$ 的 size 为 $n \times p.$<br>由于 $ST \in \mathcal{L}(U, W),$ 所以我们将 $ST$ 作用在 $u_k, k = 1, \cdots, p$ 身上.</p>
+<script type="math/tex; mode=display">Tu_k = A_{1k}u_1 + \cdots + A_{nk}u_n, k = 1, \cdots, p \\
+Sv_r = C_{1r}w_1 + \cdots + C_{mr}w_m, r = 1, \cdots, n.</script><p>注意这里 $C$ 的 size 为 $m \times n, A$ 的 size 为 $n \times p.$<br>由于 $ST \in \mathcal{L}(U, W),$ 所以我们将 $ST$ 作用在 $u_k, k = 1, \cdots, p$ 身上:</p>
+<script type="math/tex; mode=display">\begin{aligned}
+    (ST)u_k &= S(Tu_k) \\
+    &= S(\sum_{i=1}^{n}A_{ik}v_i) \\
+    &= \sum_{i=1}^{n}A_{ik}Sv_i \\
+    &= \sum_{r=1}^n A_{rk} \sum_{i=1}^m C_{ir}w_i.
+\end{aligned}</script><p>于是我们定义 $\displaystyle{(CA)_{jk} = \sum_{r=1}^{n}C_{jr}A_{rk}.}$</p>
 <h2 id="对偶空间与矩阵的转置"><a href="#对偶空间与矩阵的转置" class="headerlink" title="对偶空间与矩阵的转置"></a>对偶空间与矩阵的转置</h2><h3 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h3><p>我们的重点是研究矩阵运算与线性映射的联系, 所以为了保证连贯性, 有些线性映射的内容没有涉及, 但是对偶空间中又会用到这些小结论, 所以我将它们整合起来单独列在下方, 大家可以对着检查.</p>
 <ul>
 <li>null space and range: $\mathrm{null}~T$ and $\mathrm{range}~T$</li>
@@ -569,7 +575,7 @@ Sv_r = C_{1r} + \cdots + C_{mr}, r = 1, \cdots, n.</script><p>注意这里 $C$ �
 <li>$\mathrm{dim}~\mathcal{L}(V, W) \cong \mathbb{F}^{m, n}$</li>
 <li>$\mathrm{dim}~\mathcal{L}(V, W) = (\mathrm{dim}~V)(\mathrm{dim}~W)$</li>
 </ul>
-
+<h3 id="Duality-对偶性"><a href="#Duality-对偶性" class="headerlink" title="Duality 对偶性"></a>Duality 对偶性</h3><h3 id="矩阵的转置"><a href="#矩阵的转置" class="headerlink" title="矩阵的转置"></a>矩阵的转置</h3>
       
 
       
