@@ -74,7 +74,7 @@
 	        
 				<li><a href="/tags/Arts">音乐与绘画</a></li>
 	        
-				<li><a href="/tags/Thoughts/">胡思乱想</a></li>
+				<li><a href="/tags/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/">胡思乱想</a></li>
 	        
 			</ul>
 		</nav>
@@ -176,7 +176,7 @@
 		        
 					<li style="width: 11.11111111111111%"><a href="/tags/Arts">音乐与绘画</a></li>
 		        
-					<li style="width: 11.11111111111111%"><a href="/tags/Thoughts/">胡思乱想</a></li>
+					<li style="width: 11.11111111111111%"><a href="/tags/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/">胡思乱想</a></li>
 		        
 				</ul>
 			</nav>
@@ -192,6 +192,296 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-线性映射与矩阵乘法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/19/%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84%E4%B8%8E%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/">用线性映射的观点理解矩阵运算</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+        
+        <!--显示阅读次数完毕-->
+        
+        <a href="/2020/08/19/%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84%E4%B8%8E%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2020-08-19T13:20:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>通常线性代数教材都会先讲矩阵, 然后隔着好几章再讲线性变换(线性映射), 而讲矩阵时必然会涉及到矩阵的运算. 矩阵的加法只要将对应的entry相加就行, 但是乘法的定义就不那么自然了. 事实上, 如果我们从线性映射的角度去定义矩阵的运算, 这些看似奇怪的规则就会变得十分自然. </p>
+<p>Linear Algebra Done Right一书先引入线性映射的概念, 再将一种特殊的线性映射与矩阵联系起来. 矩阵的加法为何定义成对应元素相加? 矩阵的数乘为何定义成 $\lambda$ 去乘每一个元素? 矩阵的乘法为什么不是对应的元素相乘? 从线性映射的运算和线性映射的矩阵表示这两方面联合考虑, 你将会得到答案. </p>
+<p>此外, 还有一个运算: 转置. 这个对应着什么呢? 在矩阵转置这一节我们将会介绍两个全新的概念: dual map(对偶映射)和 dual space(对偶空间), 它们可以解释矩阵的转置和矩阵的rank(秩), 这也是Linear map这章中最精彩的部分.</p>
+<p>LADR有好多小结论都 left to reader 了, 参考的部分中作者省略的过程我都自己证了一遍, 在视频和笔记pdf中可以看到.  </p>
+<p>系列视频正在施工中: </p>
+<ul>
+<li>第一节 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1jk4y127Js#reply3376294845">线性映射的概念</a> 先来看看线性映射到底是啥~.  <a href="/2020/08/19/%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84%E4%B8%8E%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84%E7%9A%84%E6%A6%82%E5%BF%B5.pdf" title="线性映射的概念.pdf">线性映射的概念.pdf</a></li>
+<li>第二节 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1n54y1U7vh/">用矩阵表示线性映射</a> 紧接第一节, 根据 $V$ 中的一个基定义矩阵的元素. <a href="/2020/08/19/%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84%E4%B8%8E%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/%E7%94%A8%E7%9F%A9%E9%98%B5%E8%A1%A8%E7%A4%BA%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84.pdf" title="用矩阵表示线性映射.pdf">用矩阵表示线性映射.pdf</a></li>
+<li>第三节 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Jk4y127mv/">线性映射的运算(重要)</a> 定义映射的加法和数乘, 证明了 $\mathcal{L}(V, W)$ 在这个加法和数乘下是一个线性空间. 最后定义了映射与映射的乘法, 可用复合函数类比. 本节内容对接下来的矩阵运算的定义非常重要! <a href="/2020/08/19/%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84%E4%B8%8E%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84%E7%9A%84%E8%BF%90%E7%AE%97.pdf" title="线性映射的运算.pdf">线性映射的运算.pdf</a></li>
+<li>第四节 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1k54y1e7ua/">矩阵的加法, 数乘, 乘法</a> 矩阵加法的对应元素相加定义看似来的十分自然, 映射的加法告诉你这么定义的合理性. 矩阵乘法的定义乍一看十分古怪, 但是从复合映射的角度考虑就得来全不费工夫. </li>
+<li>第五节 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Qf4y197ev/">对偶空间与矩阵的转置</a> 最精彩的部分, $\mathcal{M}(T’) = (\mathcal{M}(T))^t$ 是本章最优美的定理. </li>
+</ul>
+<p>以下内容是一些简略的介绍, 定理的证明和其他详细内容还请看教材和笔记pdf.</p>
+<h2 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h2><ul>
+<li>$\mathbb{F}$ denotes $\mathbb{R}$ or $\mathbb{C}$</li>
+<li>$V$ and $W$ are vector spaces over $\mathbb{F}.$<h2 id="线性映射的概念"><a href="#线性映射的概念" class="headerlink" title="线性映射的概念"></a>线性映射的概念</h2><strong>def.</strong> A linear map from $V$ to $W$ is a function $T: V \to W$ with the following properties:</li>
+<li>additivity: $T(u+v)=Tu+Tv$ for all $\lambda \in \mathbb{F}$ and $v \in V.$</li>
+<li>homogenity: $T(\lambda v) = \lambda (Tv)$ for all $\lambda \in \mathbb{F}$ and $v \in V$.<h3 id="Notation-1"><a href="#Notation-1" class="headerlink" title="Notation"></a>Notation</h3>The set of all linear maps from $V$ to $W$ is denoted $\mathcal{L}(V, W).$</li>
+</ul>
+<p>这里需要大家非常熟悉映射的概念和记号. 当然映射的一般概念不是我们这里的重点, 想要复习的同学可以查阅 <em>Topology</em>, 2nd Munkres 的 section 2.</p>
+<p>$T$ 作用到 $v \in V$ 上得到 $W$ 中的元素(向量) $Tv$, 一定要明确每个元素所属的集合. 这里 $v \in V, T \in \mathcal{L}(V, W), Tv \in W.$ 初学时可以花点时间像我刚才这样把每个元素及其所属集合写下来, 要不然到对偶映射那里肯定会头晕的. </p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>我们举一个例子: 零映射. 这个映射把 $V$ 中的所有元素都映到 $W$ 中的零元. 看起来很简单是不是? 但是请注意, 这里我们遇到了两种”零”. 第一个”0”是零映射, $0 \in \mathcal{L}(V, W).$ 第二个”0”是 $W$ 中的加法单位元(additive identity), $0 \in W.$ 虽然它们看起来一模一样, 但不是同一个东西. 在没有搞清楚 $0$ 是谁的 $0$ 时, 我们并不能下一些诸如 $0=0$ 的结论. 假如我们这里 $V=W=\mathbb{R},$ 是我们非常熟悉的实数集, 那么 $0 \in \mathcal{L}(\mathbb{R}, \mathbb{R})$ 就是一个函数, 它把所有实数都映成 $0 \in \mathbb{R}.$ 既然 $0 \in \mathcal{L}(\mathbb{R}, \mathbb{R})$ 是一个函数, 那我们就换一个比较熟悉的记号 $f$ 来记零映射. 那么刚才的结论就变成了 $f(\in \mathcal{L}(\mathbb{R}, \mathbb{R})) = 0 \in \mathbb{R}.$ 由于我们没有定义映射和实数之间的大小关系, 这个式子根本就没有意义. </p>
+<p>现在回到我们的主线: 证明零映射是线性映射, 这个在视频及笔记pdf中有. </p>
+<h3 id="T-由基决定"><a href="#T-由基决定" class="headerlink" title="$T$ 由基决定"></a>$T$ 由基决定</h3><p><strong>Thm 3.5</strong> Suppose $v_1, \cdots, v_n$ is a basis of $V$ and $w_1, \cdots, w_n \in W.$ Then there exists a unique linear map $T: V \to W$ such that $Tv_j=w_j$ for each $j=1, \cdots, n.$</p>
+<p>$V$ 中一个基中的每个向量在 $T$ 下的像唯一决定了该线性映射. 凭空扔给我们一个 $T,$ 只告诉我们 $Tv_1, \cdots, Tv_n$ 这 $n$ 个元素的值(也就是定理中的 $n$ 个 $w_i$), 我们就能算出 $Tv,$ 对所有的 $v \in V.$ </p>
+<p>这是因为, $V$ 中的任一向量 $v$ 可以写成基的线性组合: </p>
+<script type="math/tex; mode=display">v=c_1v_1 + \cdots + c_nv_n,</script><p>那么 </p>
+<script type="math/tex; mode=display">Tv = T(c_1 v_1 + \cdots + c_n v_n) = c_1 Tv_1 + \cdots + c_n Tv_n.</script><p>而右边式子中的项都是已知的.</p>
+<h3 id="线性映射基本定理"><a href="#线性映射基本定理" class="headerlink" title="线性映射基本定理"></a>线性映射基本定理</h3><h2 id="用矩阵表示线性映射"><a href="#用矩阵表示线性映射" class="headerlink" title="用矩阵表示线性映射"></a>用矩阵表示线性映射</h2><p>矩阵长啥样就不多说了, 我们直接把矩阵和线性映射联系起来. </p>
+<p><strong>def.</strong> Suppose $T \in \mathcal{L}(V, W)$ and $v_1, \cdots, v_n$ is a basis of $V$ and $w_1, \cdots, w_m$ is a basis of $W.$ The matrix of $T$ with respect to these bases is the $m \times n$ matrix $\mathcal{M}(T)$ whose entries $A_{jk}$ are defined by </p>
+<script type="math/tex; mode=display">Tv_k = A_{1k}w_1 + \cdots + A_{mk}w_m</script><p>for $k=1, \cdots, n.$</p>
+<p>$Tv_k$ 是 $W$ 中的向量, 能够写成 $W$ 的基的线性组合, 系数 $A_{1k}, \cdots, {A_{mk}}$ 便是矩阵第 $k$ 列的元素. 把 $k$ 从 $1$ 遍历到 $n$ 就得到了一个完整的矩阵, 称为 $T$ 关于这一组基的矩阵, 记为 $\mathcal{M}(T).$</p>
+<h2 id="线性映射的运算"><a href="#线性映射的运算" class="headerlink" title="线性映射的运算"></a>线性映射的运算</h2><p>以下仅列出keypoints, 详见视频和笔记pdf.</p>
+<h3 id="映射的加法和数乘"><a href="#映射的加法和数乘" class="headerlink" title="映射的加法和数乘"></a>映射的加法和数乘</h3><ul>
+<li>addition: $(S+T)v := Sv + Tv$</li>
+<li>scalar multiplication: $(\lambda T)v := \lambda(Tv)$</li>
+<li>$S+T, \lambda T$ is linear. </li>
+</ul>
+<h3 id="映射的乘法-复合映射"><a href="#映射的乘法-复合映射" class="headerlink" title="映射的乘法(复合映射)"></a>映射的乘法(复合映射)</h3><ul>
+<li>$ST$ 的定义, 其中 $T \in \mathcal{L}(U, V), S \in \mathcal{L}(V, W).$</li>
+<li>$ST$ is a linear map from $U$ to $W.$</li>
+</ul>
+<h3 id="mathcal-L-V-W-是一个线性空间"><a href="#mathcal-L-V-W-是一个线性空间" class="headerlink" title="$\mathcal{L}(V, W)$ 是一个线性空间"></a>$\mathcal{L}(V, W)$ 是一个线性空间</h3><p>按照我们定义的线性映射的加法和数乘, $\mathcal{L}(V, W)$ 构成域 $\mathbb{F}$ 上的线性空间. 由8条性质验证, 视频及笔记中有.</p>
+<h2 id="矩阵的加法-数乘-乘法"><a href="#矩阵的加法-数乘-乘法" class="headerlink" title="矩阵的加法, 数乘, 乘法"></a>矩阵的加法, 数乘, 乘法</h2><p>以下我们都假定 $V, W$ 是有限维线性空间, 它们的一个基分别是 $v_1, \cdots, v_n$<br>和 $w_1, \cdots, w_m.$</p>
+<h3 id="矩阵的加法"><a href="#矩阵的加法" class="headerlink" title="矩阵的加法"></a>矩阵的加法</h3><p>直觉上我们想把两个矩阵相加定义成对应位置元素相加:</p>
+<script type="math/tex; mode=display">(A+C)_{jk} = A_{jk} + C_{jk},</script><p>这样定义的加法是否具有良好的性质? 我们知道, $\mathcal{L}(V, W)$ 中的每一个线性映射都对应着一个矩阵, 现设 $\mathcal{M}(T)=A, \mathcal{M}(S)=C.$ 那么就有 $A+C = \mathcal{M}(T) + \mathcal{M}(S).$ 由于 $\mathcal{L}(V, W)$ 是一个线性空间, 所以 $S+T \in \mathcal{L}(V, W),$ 它也可以由一个矩阵表示, 记为 $\mathcal{M}(S+T).$ 接下来我们就要验证按照上面的加法定义, 是否有 </p>
+<script type="math/tex; mode=display">\mathcal{M}(T)+\mathcal{M}(S)=\mathcal{M}(T+S),</script><p>即映射的矩阵的和是不是等于映射的和的矩阵. 这句话可能有点拗口, 用英文讲可能会更清楚一点: We want to know if the sum of the matrices of the two maps equals to the matrix of the sum of the two maps. </p>
+<p>要验证两个矩阵是否相等, 我们只需要验证每一列的对应元素是否相等. 考虑第 $k$ 列, 回忆线性映射的矩阵的定义, 第 $k$ 列的元素是某个线性组合的系数:</p>
+<script type="math/tex; mode=display">Tv_k = A_{1k}w_1 + \cdots + A_{mk}w_m, \\
+  Sv_k = C_{1k}w_1 + \cdots + C_{mk}w_m.</script><p>那么, </p>
+<script type="math/tex; mode=display">\begin{aligned}
+    (T+S)v_k &= Tv_k + Sv_k \\
+    &= (A_{1k}+C_{1k})w_1 + \cdots (A_{mk}+C_{mk})w_n.
+\end{aligned}</script><p>于是 $\mathcal{M}(T+S)$ 第 $k$ 列的元素从上到下依次是 $A_{1k}+C_{1k}, \cdots, A_{mk}+C_{mk}.$ 而按照我们加法的定义, $\mathcal{M}(T)+\mathcal{M}(S)$ 第 $k$ 列的元素从上到下也是 $A_{1k}+C_{1k}, \cdots, A_{mk}+C_{mk}.$ 从而 $\mathcal{M}(T)+\mathcal{M}(S)=\mathcal{M}(T+S).$  因此这样定义的加法具有良好的性质. 看到这里, 大家可能会有疑惑, 什么叫好的性质? 注意到 $\mathcal{M}(T)+\mathcal{M}(S)=\mathcal{M}(T+S)$ 这种拆括号并括号的形式是不是很像线性映射定义中的 additivity? 这样, $\mathcal{M}$ 便满足了线性映射的必要条件中的其中一个. 事实上, $\mathcal{M}$ 本身就是一种线性映射, 这个我们后面再讲. </p>
+<h3 id="矩阵的数乘"><a href="#矩阵的数乘" class="headerlink" title="矩阵的数乘"></a>矩阵的数乘</h3><p>跟上面的思路一样, 我们先试着定义</p>
+<script type="math/tex; mode=display">(\lambda A)_{jk} = \lambda (A_{jk}), \lambda \in \mathbb{F},</script><p>在这个定义之下可以验证 $\mathcal{M}(\lambda T) = \lambda \mathcal{M}(T),$ 所以这样定义是合理的. </p>
+<h3 id="矩阵的乘法"><a href="#矩阵的乘法" class="headerlink" title="矩阵的乘法"></a>矩阵的乘法</h3><p>矩阵的乘法自然和映射的乘法联系到一起.我们希望定义矩阵的乘法, 使得在这个定义之下有</p>
+<script type="math/tex; mode=display">\mathcal{M}(ST) = \mathcal{M}(S)\mathcal{M}(T).</script><p>我们直接从线性映射的矩阵出发. 注意到上式右边只是形式地写出了 $\mathcal{M}(S)\mathcal{M}(T),$ 我们还没有定义这样的运算, 但是我们已经定义过映射的乘法, 所以可以表达出 $\mathcal{M}(ST)$ 的元素. 复合映射需要3个线性空间, 设 $T:U \to V, S:V \to W.$ 设 $U$ 的一个基为 $u_1, \cdots, u_p,$ $V$ 的一个基为 $v_1, \cdots, v_n,$ $W$ 的一个基为 $w_1, \cdots, w_m.$</p>
+<script type="math/tex; mode=display">\begin{array}{ccccc}
+    U & \xrightarrow{T} & V &\xrightarrow{S} & W
+\end{array}</script><p>设 $\mathcal{M}(S) = C, \mathcal{M}(T) = A.$ 由于这里涉及到多个线性空间, 为避免混淆, 我们按定义写出 $C$ 和 $A$ 的列元素:</p>
+<script type="math/tex; mode=display">Tu_k = A_{1k}u_1 + \cdots + A_{nk}u_n, k = 1, \cdots, p \\
+Sv_r = C_{1r}w_1 + \cdots + C_{mr}w_m, r = 1, \cdots, n.</script><p>注意这里 $C$ 的 size 为 $m \times n, A$ 的 size 为 $n \times p.$<br>由于 $ST \in \mathcal{L}(U, W),$ 所以我们将 $ST$ 作用在 $u_k, k = 1, \cdots, p$ 身上:</p>
+<script type="math/tex; mode=display">\begin{aligned}
+    (ST)u_k &= S(Tu_k) \\
+    &= S(\sum_{i=1}^{n}A_{ik}v_i) \\
+    &= \sum_{i=1}^{n}A_{ik}Sv_i \\
+    &= \sum_{r=1}^n A_{rk} \sum_{i=1}^m C_{ir}w_i.
+\end{aligned}</script><p>于是我们定义 $\displaystyle{(CA)_{jk} = \sum_{r=1}^{n}C_{jr}A_{rk}.}$</p>
+<h2 id="对偶空间与矩阵的转置"><a href="#对偶空间与矩阵的转置" class="headerlink" title="对偶空间与矩阵的转置"></a>对偶空间与矩阵的转置</h2><h3 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h3><p>我们的重点是研究矩阵运算与线性映射的联系, 所以为了保证连贯性, 有些线性映射的内容没有涉及, 但是对偶空间中又会用到这些小结论, 所以我将它们整合起来单独列在下方, 大家可以对着检查.</p>
+<ul>
+<li>null space and range: $\mathrm{null}~T$ and $\mathrm{range}~T$</li>
+<li>线性映射基本定理: <script type="math/tex; mode=display">\mathrm{dim}~V = \mathrm{dim~null}~T + \mathrm{dim~range}~T.</script></li>
+<li>逆映射 invertible maps</li>
+<li>同构 isomorphism</li>
+<li>$\mathrm{dim}~\mathcal{L}(V, W) \cong \mathbb{F}^{m, n}$</li>
+<li>$\mathrm{dim}~\mathcal{L}(V, W) = (\mathrm{dim}~V)(\mathrm{dim}~W)$</li>
+</ul>
+<h3 id="Duality-对偶性"><a href="#Duality-对偶性" class="headerlink" title="Duality 对偶性"></a>Duality 对偶性</h3><p>本节写于2020/8/25, 也就是七夕节啦~ 祝大家七夕快乐~</p>
+<p>七夕节是谁过的? 是情侣过的. 情侣都是成双成对的, 也就是说一对情侣由两个人组成(consisting of two parts). 而描述 consisting of two parts 的一个英文单词是 dual,<br>名词形式是 duality, 也就是我们这节讲述的内容: 对偶性.</p>
+<h4 id="对偶空间-dual-space"><a href="#对偶空间-dual-space" class="headerlink" title="对偶空间 dual space"></a>对偶空间 dual space</h4><p>考虑一种特殊的线性映射: $T \in \mathcal{L}(V,\mathbb{F}),$ 它有一个新名字, 叫 $V$ 上的线性泛函(linear functional on $V$). 称 $\mathcal{L}(V, \mathbb{F})$ 为 $V$ 的对偶空间(dual space), 记作 $V’.$</p>
+<p>对于这么一个新的线性空间, 我们要研究它的结构, 是有限维还是无限维的? 如果是有限维的, 它的一个基长成什么样子?</p>
+<p>关于维数, 我们有 $\mathrm{dim} V’ = \mathrm{dim} V.$ 这个的证明要用到线性映射基本定理和线性空间的同构, 鉴于这篇文章主要探究的是线性映射的运算和矩阵运算间的联系, 这部分内容我会单独开一个坑填完.</p>
+<p>这样, 我们只需在 $V’$ 中找出 $n$ 个线性无关的向量, 就得到了一个基.<br>先定义, 再验证. Let $\phi_j \in V’$ be such that </p>
+<script type="math/tex; mode=display">\phi_j(v_k) = \begin{cases}
+  1, \quad \mathrm{if}~j=k \\
+  0, \quad \mathrm{if}~j\neq k
+\end{cases}</script><p>for $j=1, \cdots, n, k=1, \cdots, n.$<br>我们称 $\phi_1, \cdots, \phi_n$ 为 $v_1, \cdots, v_n$ 的一个对偶基(dual basis). 那么 $\phi_1, \cdots, \phi_n$ 是不是 $V’$ 的一个基呢?<br>我们只要验证 $\phi_1, \cdots, \phi_n$ 线性无关就可以了. Let $a_1, \cdots, a_n \in \mathbb{F}$ be such that </p>
+<script type="math/tex; mode=display">a_1 \phi_1 + \cdots + a_n \phi_n = 0,</script><p>令上式两边作用到 $v_j,$ 得</p>
+<script type="math/tex; mode=display">(a_1 \phi_1 + \cdots + a_n \phi_n)(v_j) = 0(v_j) = 0,</script><p>由 dual basis 的定义得 $a_j = 0, j=1, \cdots, n.$ 所以 $\phi_1, \cdots, \phi_n$ 线性无关. </p>
+<h4 id="对偶映射-dual-map"><a href="#对偶映射-dual-map" class="headerlink" title="对偶映射 dual map"></a>对偶映射 dual map</h4><p>If $T \in \mathcal{L}(V, W),$ then the dual map of $T$ is the linear map $T’ \in \mathcal{L}(W’, V’)$ defined by $T’(\phi) = \phi \circ T$ for $\phi \in W’.$<br>这个定义涉及到了好几个线性空间: $V, W, V’, W’, \mathcal{L}(V, W), \mathcal{L}(W’, V’).$ 这就需要我们分析每个映射是从哪映到哪的, 详细的分析过程见视频. </p>
+<h3 id="矩阵的转置"><a href="#矩阵的转置" class="headerlink" title="矩阵的转置"></a>矩阵的转置</h3><p>最精彩的部分来了. 首先我们定义一下矩阵的转置: </p>
+<script type="math/tex; mode=display">(A^t)_{kj} = A_{jk}.</script><p>矩阵的加法和乘法都有对应的线性映射意义, 那么转置对应着哪种线性映射呢? 这就是我们刚才讲的对偶映射. Let $T \in \mathcal{L}(V, W),$ then $\mathcal{M}(T’) = (\mathcal{M}(T))^t.$</p>
+<p><strong>proof.</strong> Let $\mathcal{M}(T’)=A, \mathcal{M}(T)=C.$<br>由线性映射的定义, 有</p>
+<script type="math/tex; mode=display">T'(\phi_k) = A_{1k}\phi_1 + \cdots + A_{nk} \phi_n, 1 \leq k \leq m.</script><p>由对偶映射的定义,  </p>
+<script type="math/tex; mode=display">\phi_k \circ T = A_{1k}\phi_1 + \cdots + A_{nk} \phi_n, 1 \leq k \leq m</script><script type="math/tex; mode=display">(\phi_k \circ T)(v_r) = A_{1k}\phi_1(v_r) + \cdots + A_{nk} \phi_n(v_r)= A_{rk}, 1 \leq r \leq n</script><p>同时, 我们还有</p>
+<script type="math/tex; mode=display">\begin{aligned}
+  (\phi_k \circ T)(v_r) &= \phi_k(Tv_r) \\
+  &= \phi_k(C_{1r}w_1 + \cdots + C_{mr}w_m) \\
+  &= C_{kr}
+\end{aligned}</script><p>Therefore, $C_{kr} = A_{kr}. \quad \square$</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">线性代数</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Algebra</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Algebra//" class="article-tag-list-link color3">Algebra</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/19/%E7%BA%BF%E6%80%A7%E6%98%A0%E5%B0%84%E4%B8%8E%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-piano" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/19/piano/">一些练琴的视频</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+        
+        <!--显示阅读次数完毕-->
+        
+        <a href="/2020/08/19/piano/" class="archive-article-date">
+  	<time datetime="2020-08-19T04:39:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对于钢琴仅仅停留在兴趣层面, 弹一些动漫相关的曲子.</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1gK4y1k74H/">Connect 魔法少女小圆OP(TV size)</a><br>爱的战士成名作, 轻松欢快的歌声揭示了此番的治愈本质.<br><img src="/2020/08/19/piano/Connect.jpg" class=""></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV18p4y1v7Eq/">This Game 游戏人生 No Game No Life (好大的鱼)</a><br>这部番我没有看过, 但是OP是真的好听. zzz谱难度非常大, 录的时候有点紧张导致开头速度过快. 好大的鱼部分左手大跳紧接分解和弦, 同时右手八度大跳都要在极短的时间内弹奏, 个人感觉是全曲最难的部分.<br><img src="/2020/08/19/piano/ThisGame.jpg" class=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Music</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Piano</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Arts</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Arts//" class="article-tag-list-link color5">Arts</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/19/piano/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Word-Power-Made-Easy" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -556,6 +846,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">古典微分几何</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">实变函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">胡思乱想</a>
               </li>
             
             <div class="clearfix"></div>
